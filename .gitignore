@@ -110,6 +110,7 @@ ENV/
 
 # IDEs
 .idea/
+*.sublime-*
 
 
 # Application-specific ignores
