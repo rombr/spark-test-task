@@ -2,6 +2,7 @@
 # Usage: pip install -r requirements.txt
 
 # Flask Framework
+werkzeug==0.16.1
 Flask==0.12
 
 # Flask Packages

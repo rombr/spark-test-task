@@ -1,5 +1,6 @@
-from app import db
 import datetime
+
+from app import db
 
 
 class Product(db.Model):
@@ -10,11 +11,17 @@ class Product(db.Model):
     rating = db.Column(db.Float, nullable=False)
     featured = db.Column(db.Boolean, nullable=False, default=False)
 
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    created_at = db.Column(
+        db.DateTime, nullable=False, default=datetime.datetime.utcnow
+    )
     expiration_date = db.Column(db.DateTime, nullable=True)
 
-    brand_id = db.Column(db.Integer, db.ForeignKey('brands.id'), nullable=False)
-    categories = db.relationship('Category', secondary='products_categories', backref='products')
+    brand_id = db.Column(
+        db.Integer, db.ForeignKey('brands.id'), nullable=False
+    )
+    categories = db.relationship(
+        'Category', secondary='products_categories', backref='products'
+    )
 
     items_in_stock = db.Column(db.Integer, nullable=False)
     receipt_date = db.Column(db.DateTime, nullable=True)
@@ -67,7 +74,14 @@ class Category(db.Model):
         }
 
 
-products_categories = db.Table('products_categories',
-    db.Column('product_id', db.Integer, db.ForeignKey('products.id'), primary_key=True),
-    db.Column('category_id', db.Integer, db.ForeignKey('categories.id'), primary_key=True)
+products_categories = db.Table(
+    'products_categories',
+    db.Column(
+        'product_id', db.Integer, db.ForeignKey('products.id'),
+        primary_key=True
+    ),
+    db.Column(
+        'category_id', db.Integer, db.ForeignKey('categories.id'),
+        primary_key=True
+    )
 )

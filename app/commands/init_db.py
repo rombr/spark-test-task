@@ -10,6 +10,7 @@ class InitDbCommand(Command):
         init_db()
         print('Database has been initialized.')
 
+
 def init_db():
     """ Initialize the database."""
     db.drop_all()

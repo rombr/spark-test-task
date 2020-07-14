@@ -1,16 +1,19 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate
 
 
 # Instantiate Flask extensions
 db = SQLAlchemy()
 migrate = Migrate()
 
+
 # Initialize Flask Application
-def create_app(extra_config_settings={}):
+def create_app(extra_config_settings=None):
     """Create a Flask application.
     """
+    extra_config_settings = extra_config_settings or {}
+
     # Instantiate Flask
     app = Flask(__name__)
 

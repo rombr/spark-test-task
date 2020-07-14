@@ -1,1 +1,1 @@
-from .init_db import InitDbCommand
+from .init_db import InitDbCommand # noqa

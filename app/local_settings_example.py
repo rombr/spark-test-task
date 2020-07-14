@@ -1,4 +1,3 @@
-import os
 
 # *****************************
 # Environment specific settings
@@ -10,7 +9,9 @@ DEBUG = True
 # DO NOT use Unsecure Secrets in production environments
 # Generate a safe one with:
 #     python -c "import os; print repr(os.urandom(24));"
-SECRET_KEY = 'This is an UNSECURE Secret. CHANGE THIS for production environments.'
+SECRET_KEY = (
+    'This is an UNSECURE Secret. CHANGE THIS for production environments.'
+)
 
 # SQLAlchemy settings
 SQLALCHEMY_DATABASE_URI = 'sqlite:///../app.sqlite'

@@ -1,6 +1,7 @@
 import pytest
 from app import create_app, db as the_db
 
+
 # Initialize the Flask-App with test-specific settings
 the_app = create_app(dict(
     TESTING=True,  # Propagate exceptions
@@ -11,11 +12,12 @@ the_app = create_app(dict(
     WTF_CSRF_ENABLED=False,  # Disable CSRF form validation
 ))
 
-# Setup an application context (since the tests run outside of the webserver context)
+# Setup an application context
+# (since the tests run outside of the webserver context)
 the_app.app_context().push()
 
 # Create and populate roles and users tables
-from app.commands.init_db import init_db
+from app.commands.init_db import init_db # noqa
 init_db()
 
 
@@ -29,6 +31,7 @@ def app():
 def db():
     """ Makes the 'db' parameter available to test functions. """
     return the_db
+
 
 @pytest.fixture(scope='function')
 def session(db, request):
@@ -45,11 +48,12 @@ def session(db, request):
         transaction.rollback()
         connection.close()
         session.remove()
+        init_db()
 
     request.addfinalizer(teardown)
     return session
 
+
 @pytest.fixture(scope='session')
 def client(app):
     return app.test_client()
-

@@ -52,7 +52,6 @@ def upgrade():
         sa.ForeignKeyConstraint(['product_id'], ['products.id'], ),
         sa.PrimaryKeyConstraint('product_id', 'category_id')
     )
-
     # populate data
     bind = op.get_bind()
 

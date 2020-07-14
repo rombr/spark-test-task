@@ -5,7 +5,10 @@
 # Authors: Ling Thio <ling.thio@gmail.com>
 
 [run]
-omit = app/startup/reset_db.py
+
+omit =
+    pp/startup/reset_db.py
+    migrations/*
 
 [report]
 show_missing = True
